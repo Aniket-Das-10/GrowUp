@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body{
+    overflow-x: hidden;
+}
+
+.code-border{
+    border: 2px solid;
+    border-image: linear-gradient(111.93deg, rgba(14, 26, 45, 0.24) -1.4%, rgba(17, 30, 50, 0.38) 104.96%) 1;
+    background: linear-gradient(111.93deg, rgba(14, 26, 45, 0.24) -1.4%, rgba(17, 30, 50, 0.38) 104.96%);
+    backdrop-filter: blur(26px);
+}
+
+.codeblock1{
+    width: 372.95px;
+    height: 257.05px;
+    background: linear-gradient(123.77deg, #8A2BE2 -6.46%, #FFA500 59.04%, #F8F8FF 124.53%);
+    opacity: 0.2;
+    filter: blur(34px);
+    transform: matrix(1, 0, -0.03, 1, 0, 0);
+    border-radius: 100%;
+}
+.codeblock2{
+    width: 372.95px;
+    height: 257.05px;
+    background: linear-gradient(123.77deg, #1FA2FF -6.46%, #12D8FA 59.04%, #A6FFCB 124.53%);
+    opacity: 0.2;
+    filter: blur(34px);
+    transform: matrix(1, 0, -0.03, 1, 0, 0);
+    border-radius: 100%;
+}
+.homepage_bg{
+    background: url("./assets/Images/bghome.svg");
+    height: 310px;
+}
