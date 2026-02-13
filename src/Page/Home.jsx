@@ -5,6 +5,8 @@ import HighLightText from '../components/core/Homepage/HighLightText';
 import CTAButton from '../components/core/Homepage/Button';
 import Banner from '../assets/Images/banner.mp4';
 import CodeBlock from '../components/core/Homepage/codeBlock';
+import TimelineSection from '../components/core/Homepage/TimelineSection';
+import LearningLanguageSection from '../components/core/Homepage/LearningLanguageSection';
 
 
 const Home = () => {
@@ -173,14 +175,12 @@ const Home = () => {
                             </CTAButton>
                         </div>
                     </div>
+                    <TimelineSection/>
+                    <div className="h-[100px]"></div>                
                 </div>
 
                 <div className="w-11/12 max-w-maxContent flex flex-col mx-auto gap-5 items-center justify-between">
-                    <div className="flex flex-row gap-5">
-                        <div>
-                            
-                        </div>
-                    </div>
+                    <LearningLanguageSection/>   
                 </div>
             </div>
             {/* section 3 */}
