@@ -7,7 +7,7 @@ const CodeBlock = ({
     position, heading, subheading, ctaButton1, ctaButton2, codeblock, backgroundGradient, codeColor
 }) => {
     return (
-        <div className={`flex ${position} my-20 justify-between flex-col lg:gap-10 gap-10 max-w-maxContentTab lg:max-w-maxContent mx-96 items-center text-white`}>
+        <div className={`flex ${position} my-20 justify-between flex-col lg:gap-10 gap-10 max-w-maxContentTab lg:max-w-maxContent mx-auto items-center text-white`}>
             {/*section 1*/}
             <div className='w-[100%] lg:w-[50%] flex flex-col gap-8'>
                 {heading}
