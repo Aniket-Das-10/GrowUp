@@ -34,7 +34,7 @@ const timeline = [
 
 const TimelineSection = () => {
     return (
-        <div className='flex flex-row gap-7 '>
+        <div className='flex flex-row gap-15 '>
             <div className=' w-[45%] flex flex-col gap-5'>
 
                 {
@@ -65,7 +65,7 @@ const TimelineSection = () => {
                         <p className=' font-bold text-3xl'>250</p>
                         <h2 className='text-caribbeangreen-100 text-sm'>TYPES OF COURSES</h2>
                     </div>
-                    
+
                 </div>
 
             </div>
