@@ -8,6 +8,8 @@ import CodeBlock from '../components/core/Homepage/codeBlock';
 import TimelineSection from '../components/core/Homepage/TimelineSection';
 import LearningLanguageSection from '../components/core/Homepage/LearningLanguageSection';
 import Instructor from '../assets/Images/Instructor.png';
+import ExploreMore from '../components/core/Homepage/ExploreMore';
+import Footer from "../components/core/Homepage/Footer";
 
 
 const Home = () => {
@@ -40,9 +42,9 @@ const Home = () => {
 
                 <div className='mx-3 my-12 shadow-blue-200'>
                     <div className='flex flex-col gap-5 relative'>
-                        <div className='absolute -top-3 -left-3 w-[110%] h-[110%] bg-white rounded-full blur-[100px] -z-10 opacity-30'></div>
-                        <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-white rounded-full blur-[100px] -z-10 opacity-20'></div>
-                        <video muted loop autoPlay className="shadow-[20px_20px_0px_0px_rgba(255,255,255,1)] z-10 w-full max-w-[1035px] h-auto">
+                        <div className='absolute -top-[5%] -left-[5%] w-[110%] h-[110%] bg-blue-400 rounded-full blur-[120px] -z-10 opacity-50'></div>
+                        <div className='absolute top-0 left-0 w-[50%] h-[50%] bg-blue-400 rounded-full blur-[120px] -z-10 opacity-60'></div>
+                        <video muted loop autoPlay className="shadow-[20px_20px_0px_0px_rgba(255,255,255,1)] z-10 w-full max-w-[1035px] h-auto ">
                             <source src={Banner} type='video/mp4' />
                         </video>
                     </div>
@@ -130,11 +132,14 @@ const Home = () => {
                         <nav><a href="one/">One</a><a href="two/">Two</a><a href="three/">Three</a>
                         </nav>`
                         }
-                        codeColor={"text-yellow-25"}
+                        codeColor={"text-blue-25"}
                         backgroundGradient={<div className="codeblock2 absolute"></div>}
                     />
                 </div>
+
+                <ExploreMore />
             </div>
+
 
             {/*codesection 1*/}
             {/* section 2 */}
@@ -221,6 +226,7 @@ const Home = () => {
             </div>
 
             {/* section 4 */}
+            <Footer />
         </div>
     )
 }

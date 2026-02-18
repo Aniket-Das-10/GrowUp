@@ -31,6 +31,7 @@ html, body{
     transform: matrix(1, 0, -0.03, 1, 0, 0);
     border-radius: 100%;
 }
+
 .homepage_bg{
     background: url("./assets/Images/bghome.svg");
     height: 310px;
