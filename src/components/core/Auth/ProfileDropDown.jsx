@@ -3,14 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AiOutlineCaretDown } from "react-icons/ai"
 import { VscDashboard, VscSignOut } from "react-icons/vsc"
 import { Link, useNavigate } from 'react-router-dom'
-
-// Note: This is a simplified version. Actual implementation might need
-// click-outside hooks and logout logic invocation.
+import { logout } from '../../../services/operations/authAPI'
 
 export default function ProfileDropdown() {
     const { user } = useSelector((state) => state.profile)
-    // const dispatch = useDispatch()
-    // const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [open, setOpen] = useState(false)
     const ref = useRef(null)
 
@@ -20,7 +18,7 @@ export default function ProfileDropdown() {
         <button className="relative" onClick={() => setOpen((prev) => !prev)}>
             <div className="flex items-center gap-x-1">
                 <img
-                    src={user?.image}
+                    src={user?.image || `https://api.dicebear.com/5.x/initials/svg?seed=${user?.firstName} ${user?.lastName}`}
                     alt={`profile-${user?.firstName}`}
                     className="aspect-square w-[30px] rounded-full object-cover"
                 />
@@ -40,7 +38,7 @@ export default function ProfileDropdown() {
                     </Link>
                     <div
                         onClick={() => {
-                            // dispatch(logout(navigate))
+                            dispatch(logout(navigate))
                             setOpen(false)
                         }}
                         className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm text-richblack-100 hover:bg-richblack-700 hover:text-richblack-25 cursor-pointer"

@@ -10,12 +10,14 @@ const CodeBlock = ({
         <div className={`flex ${position} my-20 justify-between flex-col lg:gap-10 gap-10 max-w-maxContentTab lg:max-w-maxContent mx-auto items-center text-white`}>
             {/*section 1*/}
             <div className='w-[100%] lg:w-[50%] flex flex-col gap-8'>
-                {heading}
-                <div className='text-richblack-300 font-bold'>
+                <div className='text-center lg:text-left'>
+                    {heading}
+                </div>
+                <div className='text-richblack-300 font-bold text-center lg:text-left'>
                     {subheading}
                 </div>
 
-                <div className="flex gap-7 mt-7">
+                <div className="flex gap-7 mt-7 justify-center lg:justify-start">
                     <CTAButton active={ctaButton1.active} linkto={ctaButton1.linkto} >
                         <div className="flex gap-2 items-center">
                             {ctaButton1.btnText}

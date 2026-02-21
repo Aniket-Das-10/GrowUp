@@ -5,6 +5,13 @@ import Login from "./Page/Login";
 import Signup from "./Page/Signup";
 import VerifyEmail from "./Page/VerifyEmail";
 import Navbar from "./components/common/Navbar";
+import About from "./Page/About";
+import Contact from "./Page/Contact";
+import Dashboard from "./Page/Dashboard";
+import MyProfile from "./components/core/Dashboard/MyProfile";
+import Settings from "./components/core/Dashboard/Settings";
+import Cart from "./components/core/Dashboard/Cart";
+import Footer from "./components/common/Footer";
 
 function App() {
   return (
@@ -15,7 +22,15 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route element={<Dashboard />}>
+          <Route path="dashboard/my-profile" element={<MyProfile />} />
+          <Route path="dashboard/settings" element={<Settings />} />
+          <Route path="dashboard/cart" element={<Cart />} />
+        </Route>
       </Routes>
+      <Footer />
     </div>
   );
 }

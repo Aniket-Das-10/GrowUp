@@ -34,8 +34,8 @@ const timeline = [
 
 const TimelineSection = () => {
     return (
-        <div className='flex flex-row gap-15 '>
-            <div className=' w-[45%] flex flex-col gap-5'>
+        <div className='flex flex-col lg:flex-row gap-20 items-center'>
+            <div className='lg:w-[45%] flex flex-col gap-14 lg:gap-3'>
 
                 {
                     timeline.map((element, index) => {
@@ -56,14 +56,14 @@ const TimelineSection = () => {
             <div className="relative shadow-blue-200">
                 <img src={timelineimg} alt="timelineImage" className='shadow-white object-cover h-fit' />
 
-                <div className=" absolute flex flex-row bg-caribbeangreen-700 text-white uppercase py-7 left-[50%] translate-x-[-50%] translate-y-[-50%]">
-                    <div className="flex flex-row gap-5 items-center border-r border-caribbeangreen-100 px-7">
-                        <p className=' font-bold text-3xl'>10</p>
-                        <h2 className='text-caribbeangreen-100 text-sm'>YEARS EXPERIENCES</h2>
+                <div className=" absolute flex flex-col lg:flex-row bg-caribbeangreen-700 text-white uppercase py-5 lg:py-10 left-[50%] translate-x-[-50%] translate-y-[-50%]">
+                    <div className="flex flex-row gap-5 items-center lg:border-r border-caribbeangreen-100 px-7 lg:px-14">
+                        <p className=' font-bold text-3xl w-[75px]'>10</p>
+                        <h2 className='text-caribbeangreen-100 text-sm w-[75px]'>YEARS EXPERIENCES</h2>
                     </div>
-                    <div className="flex flex-row gap-5 items-center border-l border-caribbeangreen-100 px-7">
-                        <p className=' font-bold text-3xl'>250</p>
-                        <h2 className='text-caribbeangreen-100 text-sm'>TYPES OF COURSES</h2>
+                    <div className="flex flex-row gap-5 items-center lg:px-14 px-7">
+                        <p className=' font-bold text-3xl w-[75px]'>250</p>
+                        <h2 className='text-caribbeangreen-100 text-sm w-[75px]'>TYPES OF COURSES</h2>
                     </div>
 
                 </div>
