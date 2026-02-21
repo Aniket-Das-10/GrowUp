@@ -10,30 +10,30 @@ const LearningLanguageSection = () => {
     return (
         <div className='w-11/12 max-w-maxContent flex flex-col items-center gap-7 mx-auto  bg-white'>
             <div className="flex flex-col gap-3 items-center">
-                <div className=' text-4xl mt-12 font-bold'>
+                <div className='text-3xl lg:text-4xl mt-12 font-bold text-center lg:text-left'>
                     Your swiss knife for
                     <HighLightText text={"learning any language"} />
                 </div>
-                <div className=" text-richblack-400 text-center mx-auto text-base w-[75%]">
+                <div className="text-richblack-400 text-center mx-auto text-base w-full lg:w-[75%] mt-3 lg:mt-0">
                     Using spin making learning multiple languages easy. with 20+ languages realistic voice-over, progress tracking, custom schedule and more.
                 </div>
             </div>
 
-            <div className="flex flex-row items-center justify-center mt-5">
+            <div className="flex flex-col lg:flex-row items-center justify-center mt-8 lg:mt-5">
                 <img
                     src={img2}
                     alt="KnowYourProgress"
-                    className='object-contain -mr-32 '
+                    className='object-contain lg:-mr-32 '
                 />
                 <img
                     src={img1}
                     alt="CompareWithOthers"
-                    className='object-contain'
+                    className='object-contain -mt-12 lg:-mt-0'
                 />
                 <img
                     src={img3}
                     alt="PlanYourLessons"
-                    className='object-contain -ml-36'
+                    className='object-contain lg:-ml-36 -mt-16 lg:-mt-0'
                 />
             </div>
 

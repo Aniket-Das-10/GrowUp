@@ -1,12 +1,12 @@
 import React from "react";
-import { FooterLink2 } from "../../../data/footer-links";
+import { FooterLink2 } from "../../data/footer-links";
 import { Link } from "react-router-dom";
 
 // Icons
 import { FaFacebook, FaGoogle, FaTwitter, FaYoutube } from "react-icons/fa";
 
 // Logo
-import Logo from "../../../assets/Logo/Logo-Full-Light.png";
+import Logo from "../../assets/Logo/Logo-Full-Light.png";
 
 const BottomFooter = ["Privacy Policy", "Cookie Policy", "Terms"];
 const Resources = [
@@ -150,7 +150,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="flex flex-row items-center justify-between w-11/12 max-w-maxContent text-richblack-400 mx-auto  pb-14 text-sm">
+            <div className="flex flex-col lg:flex-row items-center justify-between w-11/12 max-w-maxContent text-richblack-400 mx-auto  pb-14 text-sm gap-3">
                 {/* Section 1 */}
                 <div className="flex justify-between lg:items-start items-center flex-col lg:flex-row gap-3 w-full">
                     <div className="flex flex-row">
@@ -171,7 +171,7 @@ const Footer = () => {
                         })}
                     </div>
 
-                    <div className="text-center">Made by ❤️ AniketDas © 2023 GrowUp</div>
+                    <div className="text-center">Made by ❤️ Aniket © 2026 GrowUp</div>
                 </div>
             </div>
         </div>

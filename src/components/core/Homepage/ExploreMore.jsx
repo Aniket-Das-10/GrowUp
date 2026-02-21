@@ -29,7 +29,7 @@ const ExploreMore = () => {
     return (
         <div>
 
-            <div className='text-4xl font-semibold text-center'>
+            <div className='text-3xl lg:text-4xl font-semibold text-center'>
                 Unlock the
                 <HighLightText text={"Power of Code"} />
             </div>
@@ -39,17 +39,17 @@ const ExploreMore = () => {
             </p>
             <div className="lg:h-[50px]"></div>
 
-            <div className='mt-5 flex flex-row rounded-full bg-richblack-800 mb-5 border-richblack-100
-      px-1 py-1'>
+            <div className='flex flex-row rounded-full bg-richblack-800 mb-5 border border-richblack-700
+      px-1 py-1 w-max max-w-full mx-auto md:w-fit shadow-[0_1.5px_rgba(255,255,255,0.25)] overflow-x-auto scrollbar-hide'>
                 {
                     tabsName.map((element, index) => {
                         return (
                             <div
-                                className={`text-[16px] flex flex-row items-center gap-2 
+                                className={`text-[16px] flex flex-row items-center gap-2 whitespace-nowrap
                 ${currentTab === element
-                                        ? "bg-richblack-900 text-richblack-5 font-medium"
+                                        ? "bg-richblack-900 text-richblack-5 font-medium shadow-[0_1px_rgba(255,255,255,0.2)]"
                                         : "text-richblack-200"} rounded-full transition-all duration-200 cursor-pointer
-                hover:bg-richblack-900 hover:text-richblack-5 px-7 py-2`}
+                hover:bg-richblack-700 hover:text-richblack-5 px-5 lg:px-7 py-2`}
                                 key={index}
                                 onClick={() => setMyCards(element)}
                             >

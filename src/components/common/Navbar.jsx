@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai"
+import { AiOutlineMenu, AiOutlineShoppingCart, AiOutlineSearch } from "react-icons/ai"
 import { BsChevronDown } from "react-icons/bs"
 import { useSelector } from "react-redux"
 import { Link, matchPath, useLocation } from "react-router-dom"
@@ -33,8 +33,6 @@ function Navbar() {
         })()
     }, [])
 
-    // console.log("sub links", subLinks)
-
     const matchRoute = (route) => {
         return matchPath({ path: route }, location.pathname)
     }
@@ -58,8 +56,8 @@ function Navbar() {
                                     <>
                                         <div
                                             className={`group relative flex cursor-pointer items-center gap-1 ${matchRoute("/catalog/:catalogName")
-                                                    ? "text-yellow-25"
-                                                    : "text-richblack-25"
+                                                ? "text-yellow-25"
+                                                : "text-richblack-25"
                                                 }`}
                                         >
                                             <p>{link.title}</p>
@@ -68,7 +66,7 @@ function Navbar() {
                                                 <div className="absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-richblack-5"></div>
                                                 {loading ? (
                                                     <p className="text-center">Loading...</p>
-                                                ) : (subLinks && subLinks.length) ? (
+                                                ) : subLinks && subLinks.length ? (
                                                     <>
                                                         {subLinks
                                                             ?.filter(
@@ -97,8 +95,8 @@ function Navbar() {
                                     <Link to={link?.path}>
                                         <p
                                             className={`${matchRoute(link?.path)
-                                                    ? "text-yellow-25"
-                                                    : "text-richblack-25"
+                                                ? "text-yellow-25"
+                                                : "text-richblack-25"
                                                 }`}
                                         >
                                             {link.title}
@@ -109,33 +107,48 @@ function Navbar() {
                         ))}
                     </ul>
                 </nav>
+                {/* Search Bar */}
+                <div className="hidden lg:flex items-center bg-richblack-800 rounded-full px-4 py-1 border border-richblack-700 transition-all duration-200 focus-within:border-yellow-50">
+                    <input
+                        type="text"
+                        placeholder="Search"
+                        className="bg-transparent text-richblack-5 outline-none w-[120px] lg:w-[160px] text-sm"
+                    />
+                    <AiOutlineSearch className="text-richblack-100 text-lg" />
+                </div>
                 {/* Login / Signup / Dashboard */}
                 <div className="hidden items-center gap-x-4 md:flex">
-                    {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
-                        <Link to="/dashboard/cart" className="relative">
-                            <AiOutlineShoppingCart className="text-2xl text-richblack-100" />
-                            {totalItems > 0 && (
-                                <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
-                                    {totalItems}
-                                </span>
+                    {token === null && (
+                        <div className="flex items-center gap-x-4">
+                            <Link to="/login">
+                                <button className={`border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] rounded-md transition-all duration-200 hover:scale-95 ${matchRoute("/login") ? "text-yellow-25" : "text-richblack-100"
+                                    }`}>
+                                    Log in
+                                </button>
+                            </Link>
+                            <Link to="/signup">
+                                <button className={`border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] rounded-md transition-all duration-200 hover:scale-95 ${matchRoute("/signup") ? "text-yellow-25" : "text-richblack-100"
+                                    }`}>
+                                    Sign up
+                                </button>
+                            </Link>
+                        </div>
+                    )}
+                    {token !== null && (
+                        <div className="flex items-center gap-x-4">
+                            {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
+                                <Link to="/dashboard/cart" className="relative">
+                                    <AiOutlineShoppingCart className="text-2xl text-richblack-100" />
+                                    {totalItems > 0 && (
+                                        <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
+                                            {totalItems}
+                                        </span>
+                                    )}
+                                </Link>
                             )}
-                        </Link>
+                            <ProfileDropdown />
+                        </div>
                     )}
-                    {token === null && (
-                        <Link to="/login">
-                            <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
-                                Log in
-                            </button>
-                        </Link>
-                    )}
-                    {token === null && (
-                        <Link to="/signup">
-                            <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
-                                Sign up
-                            </button>
-                        </Link>
-                    )}
-                    {token !== null && <ProfileDropdown />}
                 </div>
                 <button className="mr-4 md:hidden">
                     <AiOutlineMenu fontSize={24} fill="#AFB2BF" />
