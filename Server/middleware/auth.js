@@ -10,26 +10,23 @@ exports.auth = async (req, res, next) => {
       req.body?.token ||
       (req.header("Authorization") ? req.header("Authorization").replace("Bearer ", "") : null);
 
-
     if (!token) {
       return res.status(401).json({ success: false, message: `Token Missing` });
     }
 
     try {
-
       const decode = await jwt.verify(token, process.env.JWT_SECRET);
       console.log(decode);
-
       req.user = decode;
+      next();
     } catch (error) {
-
       return res
         .status(401)
-        .json({ success: false, message: "token is invalid" });
+        .json({
+          success: false,
+          message: error.name === "TokenExpiredError" ? "token is expired" : "token is invalid"
+        });
     }
-
-
-    next();
   } catch (error) {
     console.error("Auth Middleware Error:", error);
     return res.status(401).json({
