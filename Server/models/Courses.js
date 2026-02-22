@@ -1,37 +1,40 @@
 const mongoose = require('mongoose');
 
 const courses = new mongoose.Schema({
-    courseName:{type: String},
-    courseDescription:{type: String},
-    instructor:{
+    courseName: { type: String },
+    courseDescription: { type: String },
+    instructor: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: "User"
     },
-    whatYouWillLearn:{
+    whatYouWillLearn: {
         type: String,
     },
-    courseContent:[{
+    courseContent: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Section"
     }],
-    ratingAndReview:[{
+    ratingAndReview: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "RatingAndReview"
     }],
-    price:{type: Number},
-    thumbnail:{ type: String },
-    tag:{
+    price: { type: Number },
+    thumbnail: { type: String },
+    tag: {
         type: [String],
         required: true,
     },
-    studentEnrolled:[{
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Category",
+    },
+    studentEnrolled: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-        required: true
     }],
     instructions: {
-    type: [String],
+        type: [String],
     },
     status: {
         type: String,
@@ -40,4 +43,4 @@ const courses = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model("Courses",courses);
+module.exports = mongoose.model("Courses", courses);

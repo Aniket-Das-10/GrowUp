@@ -34,12 +34,9 @@ exports.createCategory = async (req, res) => {
 exports.showAllCategories = async (req, res) => {
   try {
     const allCategories = await Category.find().populate("course");
-    const categoriesWithPublishedCourses = allCategories.filter((category) =>
-      category.course.some((course) => course.status === "Published")
-    );
     res.status(200).json({
       success: true,
-      data: categoriesWithPublishedCourses,
+      data: allCategories,
     });
   } catch (error) {
     res.status(500).json({
