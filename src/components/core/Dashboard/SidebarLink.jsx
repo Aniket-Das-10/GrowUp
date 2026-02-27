@@ -1,6 +1,5 @@
 import React from 'react'
 import * as Icons from "react-icons/vsc"
-import { useDispatch } from 'react-redux';
 import { NavLink, useLocation, matchPath } from 'react-router-dom';
 
 const SidebarLink = ({ link, iconName }) => {
