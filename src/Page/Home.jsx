@@ -196,7 +196,7 @@ const Home = () => {
                     <div className='lg:w-[50%]'>
                         <img
                             src={Instructor}
-                            alt=""
+                            alt="Instructor image"
                             className='shadow-white'
                         />
                     </div>
