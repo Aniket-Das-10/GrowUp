@@ -24,9 +24,22 @@ database();
 // Middlewares
 app.use(cookieParser());
 app.use(express.json());
+const allowedOrigins = [
+  "http://localhost:3000",
+  // Allow production frontend URL from env
+  process.env.FRONTEND_URL,
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin || allowedOrigins.includes(origin) || allowedOrigins.some(al => origin.startsWith(al))) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
@@ -60,3 +73,6 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`App is listening at port ${PORT}`);
 });
+
+// Export the Express app for Vercel Serverless Functions
+module.exports = app;
