@@ -10,9 +10,9 @@ const {
 const {
   resetPasswordToken,
   resetPassword,
-} = require("../Controller/ResetPassword");
+} = require("../controller/ResetPassword");
 
-const { auth } = require("../Middleware/Auth");
+const { auth } = require("../middleware/auth");
 
 router.post("/login", logIn);
 
