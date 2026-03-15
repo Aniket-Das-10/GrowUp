@@ -10,6 +10,10 @@ export const endpoints = {
 }
 
 // CATAGORIES API
+export const catalogData = {
+    CATALOGPAGEDATA_API: "http://localhost:4000/api/v1/course/getCategoryPageDetails",
+}
+
 export const categories = {
     CATEGORIES_API: BASE_URL + "/course/showAllCategories",
 }
@@ -38,4 +42,9 @@ export const courseEndpoints = {
     GET_FULL_COURSE_DETAILS_AUTHENTICATED: BASE_URL + "/course/getFullCourseDetails",
     LECTURE_COMPLETION_API: BASE_URL + "/course/updateCourseProgress",
     CREATE_RATING_API: BASE_URL + "/course/createRating",
+}
+export const studentEndpoints = {
+    COURSE_PAYMENT_API: BASE_URL + "/payment/capturePayment",
+    COURSE_VERIFY_API: BASE_URL + "/payment/verifyPayment",
+    SEND_PAYMENT_SUCCESS_EMAIL_API: BASE_URL + "/payment/sendPaymentSuccessEmail",
 }
