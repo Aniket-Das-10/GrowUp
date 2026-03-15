@@ -54,7 +54,7 @@ exports.categoryPageDetails = async (req, res) => {
       .populate({
         path: "course",
         match: { status: "Published" },
-        populate: "ratingAndReviews",
+        populate: "ratingAndReview",
       })
       .exec();
 
@@ -65,7 +65,7 @@ exports.categoryPageDetails = async (req, res) => {
         .json({ success: false, message: "Category not found" });
     }
 
-    if (selectedCategory.courses.length === 0) {
+    if (selectedCategory.course.length === 0) {
       console.log("No courses found for the selected category.");
       return res.status(200).json({
         success: true,
