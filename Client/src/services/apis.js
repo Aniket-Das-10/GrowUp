@@ -11,7 +11,7 @@ export const endpoints = {
 
 // CATAGORIES API
 export const catalogData = {
-    CATALOGPAGEDATA_API: "http://localhost:4000/api/v1/course/getCategoryPageDetails",
+    CATALOGPAGEDATA_API: BASE_URL + "/course/getCategoryPageDetails",
 }
 
 export const categories = {
