@@ -4,9 +4,9 @@ const {
   capturePayment,
   verifyPayment,
   sendPaymentSuccessEmail,
-} = require("../Controller/Payment");
+} = require("../controller/Payment");
 
-const { auth, isStudent } = require("../Middleware/Auth");
+const { auth, isStudent } = require("../middleware/auth");
 router.post("/capturePayment", auth, isStudent, capturePayment);
 router.post("/verifyPayment", auth, isStudent, verifyPayment);
 router.post(

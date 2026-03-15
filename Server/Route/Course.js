@@ -9,42 +9,42 @@ const {
   editCourse,
   getInstructorCourses,
   deleteCourse,
-} = require("../Controller/Courses");
+} = require("../controller/Courses");
 
 const {
   showAllCategories,
   createCategory,
   categoryPageDetails,
-} = require("../Controller/Category");
+} = require("../controller/Category");
 
 const {
   createSection,
   updateSection,
   deletSection,
-} = require("../Controller/Section");
+} = require("../controller/Section");
 
 const {
   createSubsection,
   updateSubSection,
   deletSubsection,
-} = require("../Controller/SubSection");
+} = require("../controller/SubSection");
 
 const {
   createRating,
   getAverageRating,
   getAllRatingAndReview,
-} = require("../Controller/RatingandReview");
+} = require("../controller/RatingAndReview");
 const {
   updateCouseProgress,
   //getProgressPercentage,
-} = require("../Controller/CourseProgress");
+} = require("../controller/CourseProgress");
 
 const {
   auth,
   isInstructor,
   isStudent,
   isAdmin,
-} = require("../Middleware/Auth");
+} = require("../middleware/auth");
 
 router.post("/createCourse", auth, isInstructor, createCourse);
 
