@@ -7,7 +7,7 @@ const dbconnection = ()=>{
    .catch((err)=>{
     console.log("issue in db connection");
     console.error(err.message);
-    process.exit(1);
+    // process.exit(1); // Do not exit in serverless environment
    });
 }
 
