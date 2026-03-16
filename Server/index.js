@@ -34,11 +34,26 @@ app.use(
   cors({
     origin: (origin, callback) => {
       // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin || allowedOrigins.includes(origin) || allowedOrigins.some(al => origin.startsWith(al))) {
+      if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        console.log("Origin not allowed by CORS:", origin);
-        callback(new Error("Not allowed by CORS"));
+        // Fallback for subdomains or trailing slashes if needed, but be careful
+        const isAllowed = allowedOrigins.some(al => {
+          try {
+            const allowedHost = new URL(al).host;
+            const requestHost = new URL(origin).host;
+            return allowedHost === requestHost;
+          } catch (e) {
+            return origin.startsWith(al);
+          }
+        });
+
+        if (isAllowed) {
+          callback(null, true);
+        } else {
+          console.log("Origin not allowed by CORS:", origin);
+          callback(new Error("Not allowed by CORS"));
+        }
       }
     },
     credentials: true,
