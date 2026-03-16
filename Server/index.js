@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use(express.json());
 const allowedOrigins = [
   "http://localhost:3000",
-  // Allow production frontend URL from env
+  "https://grow-up-seven.vercel.app",
   process.env.FRONTEND_URL,
 ].filter(Boolean);
 
@@ -37,6 +37,7 @@ app.use(
       if (!origin || allowedOrigins.includes(origin) || allowedOrigins.some(al => origin.startsWith(al))) {
         callback(null, true);
       } else {
+        console.log("Origin not allowed by CORS:", origin);
         callback(new Error("Not allowed by CORS"));
       }
     },

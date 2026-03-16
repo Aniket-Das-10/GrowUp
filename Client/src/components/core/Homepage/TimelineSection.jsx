@@ -9,7 +9,7 @@ const timeline = [
     {
         logo: logo1,
         heading: "Leadership",
-        Description: "Fully committed to the success company"
+        Description: "Fully committed to the success of the company"
 
     },
     {
@@ -21,7 +21,7 @@ const timeline = [
     {
         logo: logo3,
         heading: "Flexibility",
-        Description: "The ability to switch is an important skills"
+        Description: "The ability to switch is an important skill"
 
     },
     {
@@ -59,7 +59,7 @@ const TimelineSection = () => {
                 <div className=" absolute flex flex-col lg:flex-row bg-caribbeangreen-700 text-white uppercase py-5 lg:py-10 left-[50%] translate-x-[-50%] translate-y-[-50%]">
                     <div className="flex flex-row gap-5 items-center lg:border-r border-caribbeangreen-100 px-7 lg:px-14">
                         <p className=' font-bold text-3xl w-[75px]'>10</p>
-                        <h2 className='text-caribbeangreen-100 text-sm w-[75px]'>YEARS EXPERIENCES</h2>
+                        <h2 className='text-caribbeangreen-100 text-sm w-[75px]'>YEARS OF EXPERIENCE</h2>
                     </div>
                     <div className="flex flex-row gap-5 items-center lg:px-14 px-7">
                         <p className=' font-bold text-3xl w-[75px]'>250</p>

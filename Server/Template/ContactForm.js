@@ -74,22 +74,22 @@ exports.contactUsEmail = (
   
   <body>
       <div class="container">
-          <a href="https://studynotion-edtech-project.vercel.app"><img class="logo"
-                  src="https://i.ibb.co/7Xyj3PC/logo.png" alt="StudyNotion Logo"></a>
+          <a href="https://grow-up-seven.vercel.app"><img class="logo"
+                  src="https://i.ibb.co/7Xyj3PC/logo.png" alt="Grow-Up Logo"></a>
           <div class="message">Contact Form Confirmation</div>
           <div class="body">
               <p>Dear ${firstname} ${lastname},</p>
-              <p>Thank you for contacting us. We have received your message and will respond to you as soon as possible.
+              <p>Thank you for contacting us. We have received your message and will get back to you as soon as possible.
               </p>
               <p>Here are the details you provided:</p>
               <p>Name: ${firstname} ${lastname}</p>
               <p>Email: ${email}</p>
               <p>Phone Number: ${phoneNo}</p>
               <p>Message: ${message}</p>
-              <p>We appreciate your interest and will get back to you shortly. </p>
+              <p>We appreciate your interest and will be in touch shortly.</p>
           </div>
           <div class="support">If you have any further questions or need immediate assistance, please feel free to reach
-              out to us at <a href="mailto:info@studynotion.com">info@studynotion.com</a>. We are here to help!</div>
+              out to us at <a href="mailto:info@growup.com">info@growup.com</a>. We are here to help!</div>
       </div>
   </body>
   

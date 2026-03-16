@@ -108,7 +108,7 @@ const Home = () => {
 
                         ctaButton1={
                             {
-                                btnText: "Continu Lesson",
+                                btnText: "Continue Lesson",
                                 linkto: "/signup",
                                 active: true
                             }
@@ -170,7 +170,7 @@ const Home = () => {
 
                         <div className="flex flex-col gap-5 w-full lg:w-[40%] items-center lg:items-start mt-5 lg:mt-0">
                             <div className='text-[16px] font-semibold text-center lg:text-left'>
-                                The modern StudyNotion is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.
+                                The modern Grow-Up is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.
                             </div>
 
                             <CTAButton active={true} linkto={"/signup"}>
@@ -208,7 +208,7 @@ const Home = () => {
                         </div>
 
                         <p className='font-medium text-[16px] w-full lg:w-[80%] text-richblack-300 text-center lg:text-left'>
-                            Instructors from around the world teach millions of students on StudyNotion. We provide the tools and skills to teach what you love.
+                            Instructors from around the world teach millions of students on Grow-Up. We provide the tools and skills to teach what you love.
                         </p>
 
                         <div className='w-fit'>
