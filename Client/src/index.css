@@ -7,4 +7,10 @@
     @apply rounded-[8px] bg-richblack-700 p-[12px] text-richblack-5 outline-none;
     box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.18);
   }
+  .yellowButton {
+    @apply cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblack-900 !important;
+  }
+  .blackButton {
+    @apply cursor-pointer rounded-md bg-richblack-800 px-[20px] py-[8px] font-semibold text-richblack-5 !important;
+  }
 }

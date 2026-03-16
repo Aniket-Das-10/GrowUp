@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { AiOutlineDown } from "react-icons/ai"
+import { HiOutlineVideoCamera } from "react-icons/hi"
 
 export default function CourseAccordionBar({ course, isActive, handleActive }) {
   const contentEl = useRef(null)
@@ -57,9 +58,12 @@ export default function CourseAccordionBar({ course, isActive, handleActive }) {
               >
                 <div className={`flex items-center gap-2`}>
                   <span>
-                    <video-icon />
+                    <HiOutlineVideoCamera />
                   </span>
                   <p>{subSec?.title}</p>
+                </div>
+                <div className="text-richblack-50">
+                   {subSec?.timeDuration}
                 </div>
               </div>
             )

@@ -1,9 +1,8 @@
-import React from "react"
-import { FaShareSquare } from "react-icons/fa"
+import { FaShareSquare, FaRegPlayCircle, FaMobileAlt, FaCertificate } from "react-icons/fa"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-hot-toast"
-import { BsFillCaretRightFill } from "react-icons/bs"
+import { HiOutlineCursorClick } from "react-icons/hi"
 import { addToCart } from "../../../slices/cartSlice"
 
 function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
@@ -59,7 +58,13 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
           </div>
           <div className="flex flex-col gap-4">
             <button
-              className="yellowButton"
+               className="yellowButton"
+               onClick={handleAddToCart}
+            >
+               Add to Cart
+            </button>
+            <button
+              className="blackButton"
               onClick={
                 user && course?.studentEnrolled?.includes(user?._id)
                   ? () => navigate("/dashboard/enrolled-courses")
@@ -70,11 +75,6 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
                 ? "Go To Course"
                 : "Buy Now"}
             </button>
-            {(!user || !course?.studentEnrolled?.includes(user?._id)) && (
-              <button onClick={handleAddToCart} className="blackButton">
-                Add to Cart
-              </button>
-            )}
           </div>
           <div>
             <p className="pb-3 pt-6 text-center text-sm text-richblack-25">
@@ -87,14 +87,22 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
               This course includes:
             </p>
             <div className="flex flex-col gap-3 text-sm text-caribbeangreen-100">
-              {course?.instructions?.map((item, i) => {
-                return (
-                  <p className={`flex gap-2`} key={i}>
-                    <BsFillCaretRightFill />
-                    <span>{item}</span>
-                  </p>
-                )
-              })}
+              <p className="flex items-center gap-2">
+                <FaRegPlayCircle className="text-caribbeangreen-100" />
+                <span className="text-richblack-5">8 hours on-demand video</span>
+              </p>
+              <p className="flex items-center gap-2">
+                <HiOutlineCursorClick className="text-caribbeangreen-100" />
+                <span className="text-richblack-5">Full Lifetime access</span>
+              </p>
+              <p className="flex items-center gap-2">
+                <FaMobileAlt className="text-caribbeangreen-100" />
+                <span className="text-richblack-5">Access on Mobile and TV</span>
+              </p>
+              <p className="flex items-center gap-2">
+                <FaCertificate className="text-caribbeangreen-100" />
+                <span className="text-richblack-5">Certificate of completion</span>
+              </p>
             </div>
           </div>
           <div className="text-center">

@@ -39,7 +39,7 @@ function ReviewSlider() {
     <div className="text-white">
       <div className="my-[50px] h-[184px] max-w-maxContentTab lg:max-w-maxContent">
         <Swiper
-          slidesPerView={4}
+          slidesPerView={1}
           spaceBetween={25}
           loop={true}
           freeMode={true}
@@ -47,13 +47,18 @@ function ReviewSlider() {
             delay: 2500,
             disableOnInteraction: false,
           }}
+          breakpoints={{
+            1024: {
+              slidesPerView: 4,
+            },
+          }}
           modules={[FreeMode, Pagination, Autoplay]}
           className="w-full "
         >
           {reviews.map((review, i) => {
             return (
               <SwiperSlide key={i}>
-                <div className="flex flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25">
+                <div className="flex flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25 min-h-[150px] rounded-md">
                   <div className="flex items-center gap-4">
                     <img
                       src={
@@ -97,7 +102,6 @@ function ReviewSlider() {
               </SwiperSlide>
             )
           })}
-          {/* <div className="swiper-pagination"></div> */}
         </Swiper>
       </div>
     </div>

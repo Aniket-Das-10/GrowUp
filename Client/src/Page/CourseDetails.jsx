@@ -4,6 +4,7 @@ import { HiOutlineGlobeAlt } from "react-icons/hi"
 // import { ReactMarkdown } from "react-markdown/lib/react-markdown"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
+import { BsFillCaretRightFill } from "react-icons/bs"
 
 import ConfirmationModal from "../components/common/ConfirmationModal"
 import Footer from "../components/common/Footer"
@@ -124,9 +125,9 @@ function CourseDetails() {
       <div className={`relative w-full bg-richblack-800`}>
         {/* Breadcrumbs */}
         <div className="mx-auto box-content px-4 py-4 lg:max-w-maxContent">
-          <p className="text-sm text-richblack-300">
-            {`Home / Learning / `}
-            <span className="text-yellow-25 px-1 bg-yellow-900 rounded-md">
+          <p className="flex flex-wrap items-center gap-2 text-sm text-richblack-300">
+            {`Home / Catalog / `}
+            <span className="text-yellow-25">
               {response?.data?.courseDetails?.category?.name}
             </span>
           </p>
@@ -199,7 +200,18 @@ function CourseDetails() {
           <div className="my-8 border border-richblack-600 p-8">
             <p className="text-3xl font-semibold">What you'll learn</p>
             <div className="mt-5">
-              {whatYouWillLearn}
+              {whatYouWillLearn && (
+                <ul className="grid grid-cols-1 gap-2 md:grid-cols-2">
+                  {whatYouWillLearn.split("\n").map((item, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="mt-1">
+                        <BsFillCaretRightFill className="text-yellow-100" />
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
 
@@ -212,9 +224,11 @@ function CourseDetails() {
                   <span>
                     {courseContent?.length || 0} {`section(s)`}
                   </span>
+                  <span>•</span>
                   <span>
                     {totalNoOfLectures} {`lecture(s)`}
                   </span>
+                  <span>•</span>
                   <span>{response.data?.totalDuration || "0s"} total length</span>
                 </div>
                 <div>
