@@ -8,6 +8,7 @@ import Navbar from "./components/common/Navbar";
 import About from "./Page/About";
 import Contact from "./Page/Contact";
 import Catalog from "./Page/Catalog";
+import CourseDetails from "./Page/CourseDetails";
 import Dashboard from "./Page/Dashboard";
 import MyProfile from "./components/core/Dashboard/MyProfile";
 import Settings from "./components/core/Dashboard/Settings";
@@ -29,6 +30,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="catalog/:catalogName" element={<Catalog />} />
+        <Route path="courses/:courseId" element={<CourseDetails />} />
         <Route element={<Dashboard />}>
           <Route path="dashboard/my-profile" element={<MyProfile />} />
           <Route path="dashboard/settings" element={<Settings />} />

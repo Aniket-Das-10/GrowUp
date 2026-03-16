@@ -226,7 +226,7 @@ exports.editCourse = async (req, res) => {
   }
 };
 
-exports.getcoursesDelails = async (req, res) => {
+exports.getCourseDetails = async (req, res) => {
   try {
     const { courseId } = req.body;
 
@@ -243,7 +243,7 @@ exports.getcoursesDelails = async (req, res) => {
         path: "courseContent",
         populate: {
           path: "subSection",
-          select: "videoUrl"
+          select: "videoUrl timeDuration"
         }
       })
       .exec();

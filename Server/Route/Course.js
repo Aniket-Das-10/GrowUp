@@ -4,7 +4,7 @@ const router = express.Router();
 const {
   createCourse,
   getAllCourses,
-  getcoursesDelails,
+  getCourseDetails,
   getFullCourseDetails,
   editCourse,
   getInstructorCourses,
@@ -66,7 +66,7 @@ router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses);
 
 router.get("/getAllCourses", getAllCourses);
 
-router.post("/getCourseDetails", getcoursesDelails);
+router.post("/getCourseDetails", getCourseDetails);
 
 router.post("/getFullCourseDetails", auth, getFullCourseDetails);
 
