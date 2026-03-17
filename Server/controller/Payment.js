@@ -28,37 +28,45 @@ exports.capturePayment = async (req, res) => {
             if (!course) {
                 return res.status(404).json({
                     success: false,
-                    message: "Could not find the course"
+                    message: `Could not find the course with id: ${course_id}`
                 })
             }
 
-            const uid = new mongoose.Types.ObjectId(userId);
-            if (course.studentEnrolled.includes(uid)) {
+            // Check if student is already enrolled
+            if (course.studentEnrolled.some(id => id.toString() === userId)) {
                 return res.status(200).json({
                     success: false,
-                    message: "Student is already enrolled"
+                    message: "Student is already enrolled in one of the courses"
                 })
             }
 
             totalAmount += course.price;
 
         } catch (error) {
-            console.error(error);
+            console.error("COURSE VALIDATION ERROR:", error);
             return res.status(500).json({
                 success: false,
-                message: error.message
+                message: "Error during course validation: " + error.message
             });
         }
     }
 
+    if (totalAmount <= 0) {
+        return res.status(400).json({
+            success: false,
+            message: "Invalid total amount"
+        });
+    }
+
     const options = {
-        amount: totalAmount * 100,
+        amount: Math.round(totalAmount * 100),
         currency: "INR",
-        receipt: Math.random(Date.now()).toString(),
+        receipt: `receipt_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
     };
 
     try {
         const paymentResponse = await instance.orders.create(options);
+        console.log("PAYMENT INITIATED SUCCESS:", paymentResponse.id);
         res.json({
             success: true,
             orderId: paymentResponse.id,
@@ -67,10 +75,10 @@ exports.capturePayment = async (req, res) => {
         })
     }
     catch (error) {
-        console.error(error);
+        console.error("RAZORPAY ORDER INITIATION ERROR:", error);
         return res.status(500).json({
             success: false,
-            message: "Could not initiate order"
+            message: "Could not initiate order: " + error.message
         })
     }
 };

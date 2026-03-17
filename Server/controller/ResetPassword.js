@@ -19,7 +19,7 @@ exports.resetPasswordToken = async (req,res) => {
     //generate token
     const token = await crypto.randomUUID();
     //update user token and expire time
-    const updateDetails = User.findOneAndUpdate(
+    await User.findOneAndUpdate(
         {email: email},
         {
             token:token,
@@ -28,7 +28,7 @@ exports.resetPasswordToken = async (req,res) => {
         {new: true}
     )
     //generate url
-    const url= `http://localhost:3000/update-password/${token}`
+    const url= `https://grow-up-seven.vercel.app/update-password/${token}`
     //send email containg url
     await mailsender(email,"password rest link",`password rest link:${url}`);
     return res.status(200).json({
