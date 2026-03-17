@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const mailsender = require('../utils/mailSender');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const crypto = require("crypto");
 
 
@@ -61,7 +61,7 @@ exports.resetPassword = async (req,res)=>{
         const userDetails = await User.findOne({token: token});
         //if no entry -- invalid token
         if(!userDetails){
-            return res.ststus(400).json({
+            return res.status(400).json({
                 success: false,
                 message: "invalid token"
             })
@@ -70,7 +70,7 @@ exports.resetPassword = async (req,res)=>{
         if(userDetails.resetPasswordExpire < Date.now()){
             return res.status(400).json({
                 success: false,
-                messsage: "Token time expire, please regenerae the token" 
+                message: "Token time expire, please regenerae the token" 
             })
         };
         //hash password
