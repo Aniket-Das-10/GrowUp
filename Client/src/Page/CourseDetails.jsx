@@ -5,6 +5,7 @@ import { HiOutlineGlobeAlt } from "react-icons/hi"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import { BsFillCaretRightFill } from "react-icons/bs"
+import { toast } from "react-hot-toast"
 
 import ConfirmationModal from "../components/common/ConfirmationModal"
 import Footer from "../components/common/Footer"
@@ -13,7 +14,7 @@ import CourseAccordionBar from "../components/core/Course/CourseAccordionBar"
 import CourseDetailsCard from "../components/core/Course/CourseDetailsCard"
 import { formatDate } from "../utils/dateFormatter"
 import { fetchCourseDetails } from "../services/operations/courseDetailsAPI"
-import { buyCourse } from "../services/operations/studentFeaturesAPI"
+import { buyCourse, enrollInFreeCourse } from "../services/operations/studentFeaturesAPI"
 import GetAvgRating from "../utils/avgRating"
 import Error from "./Error"
 import ReviewSlider from "../components/common/ReviewSlider"
@@ -99,7 +100,15 @@ function CourseDetails() {
 
   const handleBuyCourse = () => {
     if (token) {
-      buyCourse(token, [courseId], user, navigate, dispatch)
+      if (user?.accountType === "Instructor") {
+        toast.error("You are an Instructor. You can't buy a course.")
+        return
+      }
+      if (Number(price) === 0) {
+        enrollInFreeCourse([courseId], token, navigate, dispatch)
+      } else {
+        buyCourse(token, [courseId], user, navigate, dispatch)
+      }
       return
     }
     setConfirmationModal({
@@ -179,7 +188,7 @@ function CourseDetails() {
                 Rs. {price}
               </p>
               <button className="yellowButton" onClick={handleBuyCourse}>
-                Buy Now
+                {Number(price) === 0 ? "Enroll Now" : "Buy Now"}
               </button>
               <button className="blackButton">Add to Cart</button>
             </div>

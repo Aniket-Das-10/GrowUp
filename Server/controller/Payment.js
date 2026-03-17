@@ -119,6 +119,56 @@ exports.verifyPayment = async (req, res) => {
     return res.status(200).json({ success: false, message: "Payment Failed" });
 };
 
+exports.enrollInFreeCourse = async (req, res) => {
+    const { courses } = req.body;
+    const userId = req.user.id;
+
+    if (!courses || courses.length === 0) {
+        return res.status(400).json({
+            success: false,
+            message: "Please provide course ids"
+        })
+    }
+
+    try {
+        for (const courseId of courses) {
+            const course = await Courses.findById(courseId);
+            if (!course) {
+                return res.status(404).json({
+                    success: false,
+                    message: `Could not find the course with id: ${courseId}`
+                })
+            }
+
+            if (course.price !== 0) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Course is not free"
+                })
+            }
+
+            if (course.studentEnrolled.some(id => id.toString() === userId)) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Student is already enrolled"
+                })
+            }
+        }
+
+        await enrollStudents(courses, userId);
+        return res.status(200).json({
+            success: true,
+            message: "Enrolled successfully"
+        })
+    } catch (error) {
+        console.error("FREE ENROLLMENT ERROR:", error);
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
+
 exports.sendPaymentSuccessEmail = async (req, res) => {
     const { orderId, paymentId, amount } = req.body;
     const userId = req.user.id;

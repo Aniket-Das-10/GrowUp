@@ -25,6 +25,10 @@ export const settingsEndpoints = {
     DELETE_PROFILE_API: BASE_URL + "/profile/deleteProfile",
 }
 
+export const profileEndpoints = {
+    GET_USER_ENROLLED_COURSES_API: BASE_URL + "/profile/getEnrolledCourses",
+}
+
 export const courseEndpoints = {
     GET_ALL_COURSE_API: BASE_URL + "/course/getAllCourses",
     COURSE_DETAILS_API: BASE_URL + "/course/getCourseDetails",
@@ -48,4 +52,5 @@ export const studentEndpoints = {
     COURSE_PAYMENT_API: BASE_URL + "/payment/capturePayment",
     COURSE_VERIFY_API: BASE_URL + "/payment/verifyPayment",
     SEND_PAYMENT_SUCCESS_EMAIL_API: BASE_URL + "/payment/sendPaymentSuccessEmail",
+    FREE_ENROLL_API: BASE_URL + "/payment/enrollInFreeCourse",
 }

@@ -1,7 +1,7 @@
 import { toast } from "react-hot-toast"
 import { setUser } from "../../slices/profileSlice"
 import { apiConnector } from "../apiconnector"
-import { settingsEndpoints } from "../apis"
+import { settingsEndpoints, profileEndpoints } from "../apis"
 import { logout } from "./authAPI"
 
 const {
@@ -108,6 +108,33 @@ export function deleteProfile(token, navigate) {
             console.log("DELETE_PROFILE_API ERROR............", error)
             toast.error("Could Not Delete Profile")
         }
-        toast.dismiss(toastId)
+    toast.dismiss(toastId)
     }
+}
+
+export async function getUserEnrolledCourses(token) {
+    const toastId = toast.loading("Loading...")
+    let result = []
+    try {
+        console.log("BEFORE Calling BACKEND API FOR ENROLLED COURSES");
+        const response = await apiConnector(
+            "GET",
+            profileEndpoints.GET_USER_ENROLLED_COURSES_API,
+            null,
+            {
+                Authorization: `Bearer ${token}`,
+            }
+        )
+        console.log("AFTER Calling BACKEND API FOR ENROLLED COURSES", response);
+
+        if (!response.data.success) {
+            throw new Error(response.data.message)
+        }
+        result = response.data.data
+    } catch (error) {
+        console.log("GET_USER_ENROLLED_COURSES_API ERROR............", error)
+        toast.error("Could Not Fetch Enrolled Courses")
+    }
+    toast.dismiss(toastId)
+    return result
 }

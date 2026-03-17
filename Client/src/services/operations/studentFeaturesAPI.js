@@ -111,3 +111,23 @@ async function verifyPayment(bodyData, token, navigate, dispatch) {
     }
     toast.dismiss(toastId);
 }
+
+export async function enrollInFreeCourse(courses, token, navigate, dispatch) {
+    const toastId = toast.loading("Enrolling...");
+    try {
+        const response = await apiConnector("POST", studentEndpoints.FREE_ENROLL_API, { courses }, {
+            Authorization: `Bearer ${token}`
+        });
+
+        if (!response.data.success) {
+            throw new Error(response.data.message);
+        }
+
+        toast.success("Enrolled successfully!");
+        navigate("/dashboard/enrolled-courses");
+    } catch (error) {
+        console.log("FREE ENROLLMENT ERROR....", error);
+        toast.error(error.response?.data?.message || "Could not enroll in free course");
+    }
+    toast.dismiss(toastId);
+}
