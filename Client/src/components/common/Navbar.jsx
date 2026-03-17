@@ -134,10 +134,10 @@ function Navbar() {
                     )}
                     {token !== null && (
                         <div className="flex items-center gap-x-4">
-                            <ProfileDropdown />
-                            {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
+                            {user && (
                                 <CartDropdown />
                             )}
+                            <ProfileDropdown />
                         </div>
                     )}
                 </div>
