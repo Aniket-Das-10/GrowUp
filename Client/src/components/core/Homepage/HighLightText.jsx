@@ -2,13 +2,19 @@ import React from "react";
 
 const HighLightText = ({ text }) => {
   return (
-    <span className="font-bold bg-gradient-to-r from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] bg-clip-text text-transparent">
-      {" "}
-      {text}
-      {" "}
+    <span
+      className="font-black"
+      style={{
+        background: "linear-gradient(135deg, #a78bfa, #e879f9, #f472b6)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text",
+        filter: "drop-shadow(0 0 12px rgba(217,70,239,0.5))",
+      }}
+    >
+      {" "}{text}{" "}
     </span>
   );
 };
 
 export default HighLightText;
-

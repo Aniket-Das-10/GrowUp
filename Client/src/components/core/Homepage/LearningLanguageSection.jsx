@@ -3,50 +3,52 @@ import img1 from '../../../assets/Images/Compare_with_others.png';
 import img2 from '../../../assets/Images/Know_your_progress.png';
 import img3 from '../../../assets/Images/Plan_your_lessons.png'
 import HighLightText from './HighLightText';
-
 import CTAButton from './Button';
 
 const LearningLanguageSection = () => {
-    return (
-        <div className='w-11/12 max-w-maxContent flex flex-col items-center gap-7 mx-auto  bg-white'>
-            <div className="flex flex-col gap-3 items-center">
-                <div className='text-3xl lg:text-4xl mt-12 font-bold text-center lg:text-left'>
-                    Your swiss knife for
-                    <HighLightText text={"learning any language"} />
-                </div>
-                <div className="text-richblack-400 text-center mx-auto text-base w-full lg:w-[75%] mt-3 lg:mt-0">
-                    Using spin making learning multiple languages easy. with 20+ languages realistic voice-over, progress tracking, custom schedule and more.
-                </div>
-            </div>
+  return (
+    <div className="flex flex-col items-center gap-10 py-4">
 
-            <div className="flex flex-col lg:flex-row items-center justify-center mt-8 lg:mt-5">
-                <img
-                    src={img2}
-                    alt="KnowYourProgress"
-                    className='object-contain lg:-mr-32 '
-                />
-                <img
-                    src={img1}
-                    alt="CompareWithOthers"
-                    className='object-contain -mt-12 lg:-mt-0'
-                />
-                <img
-                    src={img3}
-                    alt="PlanYourLessons"
-                    className='object-contain lg:-ml-36 -mt-16 lg:-mt-0'
-                />
-            </div>
+      {/* Heading */}
+      <div className="text-center max-w-3xl">
+        <h2 className="text-3xl lg:text-4xl font-bold text-richblack-900">
+          Your swiss knife for
+          <HighLightText text={"learning any language"} />
+        </h2>
+        <p className="mt-4 text-richblack-500 text-base leading-relaxed max-w-2xl mx-auto">
+          With 20+ coding languages, realistic voice-over, real-time progress tracking, custom
+          schedules, and more — we make mastering any language effortless.
+        </p>
+      </div>
 
-            <div className='w-fit'>
-                <CTAButton active={true} linkto={"/signup"}>
-                    <div>
-                        Learn More
-                    </div>
-                </CTAButton>
-            </div>
+      {/* Overlapping screenshots */}
+      <div className="flex flex-col lg:flex-row items-center justify-center mt-4 lg:mt-2">
+        <img
+          src={img2}
+          alt="Know your progress"
+          className="object-contain lg:-mr-32 drop-shadow-xl"
+        />
+        <img
+          src={img1}
+          alt="Compare with others"
+          className="object-contain -mt-12 lg:-mt-0 drop-shadow-xl"
+        />
+        <img
+          src={img3}
+          alt="Plan your lessons"
+          className="object-contain lg:-ml-36 -mt-16 lg:-mt-0 drop-shadow-xl"
+        />
+      </div>
 
-        </div>
-    )
+      {/* CTA */}
+      <div className="mt-2">
+        <CTAButton active={true} linkto={"/signup"}>
+          Explore All Courses
+        </CTAButton>
+      </div>
+
+    </div>
+  )
 }
 
 export default LearningLanguageSection
