@@ -17,10 +17,16 @@ import MyCourses from "./components/core/Dashboard/MyCourses";
 import AddCourse from "./components/core/Dashboard/AddCourse";
 import EditCourse from "./components/core/Dashboard/EditCourse";
 import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
+import ViewCourse from "./components/core/ViewCourse/ViewCourse";
+import VideoDetails from "./components/core/ViewCourse/VideoDetails";
 import Footer from "./components/common/Footer";
 import Error from "./Page/Error";
+import { useSelector } from "react-redux";
+import { ACCOUNT_TYPE } from "./utils/constants";
 
 function App() {
+  const { user } = useSelector((state) => state.profile);
+
   return (
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col ">
       <Navbar />
@@ -51,6 +57,21 @@ function App() {
             <Route path="dashboard/edit-course/:courseId" element={<EditCourse />} />
             <Route path="dashboard/enrolled-courses" element={<EnrolledCourses />} />
           </Route>
+        </Route>
+
+        <Route
+          element={
+            user?.accountType === ACCOUNT_TYPE.STUDENT ? (
+              <ViewCourse />
+            ) : (
+              <Error />
+            )
+          }
+        >
+          <Route
+            path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId"
+            element={<VideoDetails />}
+          />
         </Route>
 
         {/* Error Page without Footer */}

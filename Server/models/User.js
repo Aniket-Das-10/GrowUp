@@ -52,7 +52,7 @@ const user =new mongoose.Schema(
         token: {
             type: String,
         },
-        img:{
+        image:{
             type:String,
             required:true
         },

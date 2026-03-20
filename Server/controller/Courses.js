@@ -200,7 +200,13 @@ exports.editCourse = async (req, res) => {
         },
       })
       .populate("category")
-      .populate("ratingAndReview")
+      .populate({
+        path: "ratingAndReview",
+        populate: {
+          path: "user",
+          select: "firstName lastName email image",
+        },
+      })
       .populate({
         path: "courseContent",
         populate: {
@@ -238,7 +244,13 @@ exports.getCourseDetails = async (req, res) => {
         }
       })
       .populate("category")
-      .populate("ratingAndReview")
+      .populate({
+        path: "ratingAndReview",
+        populate: {
+          path: "user",
+          select: "firstName lastName email image",
+        },
+      })
       .populate({
         path: "courseContent",
         populate: {
@@ -299,7 +311,13 @@ exports.getFullCourseDetails = async (req, res) => {
         },
       })
       .populate("category")
-      .populate("ratingAndReview")
+      .populate({
+        path: "ratingAndReview",
+        populate: {
+          path: "user",
+          select: "firstName lastName email image",
+        },
+      })
       .populate({
         path: "courseContent",
         populate: {

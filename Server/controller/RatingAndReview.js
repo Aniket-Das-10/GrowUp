@@ -35,7 +35,7 @@ exports.createRating = async (req,res) => {
         const ratingReview = await RatingAndReview.create({
             rating,
             review,
-            course: courseId,
+            courses: courseId,
             user: userId,
         });
         
@@ -44,7 +44,6 @@ exports.createRating = async (req,res) => {
                 {ratingAndReview: ratingReview}
             }
         )
-        await courseDetails.save();
         return res.status(200).json({
             success: true,
             message: "Rating and review created successfully",
@@ -102,10 +101,10 @@ exports.getAllRatingAndReview = async (req,res) => {
         .sort({rating: "desc"})
         .populate({
             path: "user",
-            select: "firstName lastName email img",
+            select: "firstName lastName email image",
         })
         .populate({
-            path: "course",
+            path: "courses",
             select: "courseName",
         })
         .exec();
